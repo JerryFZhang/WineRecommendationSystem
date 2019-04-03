@@ -18,29 +18,37 @@ app.use(cors({
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/wines', (req, res) => {
+  //return all 
   const json = {
     "wines": [{
-        "id": 1678,
-        "name": "",
-        "vidURL": null,
-        "infoURL": null,
-        "info": {}
+      "id": 1678,
+      "name": "",
+      "vidURL": null,
+      "infoURL": null,
+      "info": {}
     }],
     "total": 181,
     "offset": 0,
     "count": 5
-}
+  }
+  //return the placeholder (for now)
   res.send(json)
 })
 
 // `/rocket` endpoint that gets launch data from API
 app.get('/wine/:next', (req, res) => {
-  LaunchJS.get('getLaunches', req.params.next).then(data => {
-      res.send(data)
-    })
-    .catch(err => {
-      res.send(err)
-    })
+  // if req.params.next exists return the wine only
+  // else return "Wine not found"
+  const json = {
+    "id": 1678,
+    "name": "",
+    "vidURL": null,
+    "infoURL": null,
+    "info": {}
+  }
+
+  //return the placeholder (for now)
+  res.send(json)
 })
 
 
