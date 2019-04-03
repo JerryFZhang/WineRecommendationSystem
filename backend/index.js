@@ -21,15 +21,10 @@ app.get('/wines', (req, res) => {
   //return all 
   const json = {
     "wines": [{
-      "id": 1678,
-      "name": "",
-      "vidURL": null,
-      "infoURL": null,
+      "id": "016840",
+      "name": "Bolla Valpolicella Classico",
       "info": {}
     }],
-    "total": 181,
-    "offset": 0,
-    "count": 5
   }
   //return the placeholder (for now)
   res.send(json)
@@ -40,10 +35,8 @@ app.get('/wine/:next', (req, res) => {
   // if req.params.next exists return the wine only
   // else return "Wine not found"
   const json = {
-    "id": 1678,
-    "name": "",
-    "vidURL": null,
-    "infoURL": null,
+    "id": "016840",
+    "name": "Bolla Valpolicella Classico",
     "info": {}
   }
 

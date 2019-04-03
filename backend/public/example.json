@@ -1,9 +1,7 @@
 {
     "wines": [{
-        "id": 1678,
-        "name": "",
-        "vidURL": null,
-        "infoURL": null,
+        "id": "016840",
+        "name": "Bolla Valpolicella Classico",
         "info": {}
     }],
     "total": 181,
