@@ -23,8 +23,15 @@ app.get('/wines', (req, res) => {
     "wines": [{
       "id": "016840",
       "name": "Bolla Valpolicella Classico",
-      "info": {}
-    }],
+      "info": {
+        "price": "$14.95",
+        "size": "750 mL",
+        "description": "Bolla wines reflect true Italian style, and express the terroir of the Veneto region. Made from hand-harvested grapes, and aged for two months in oak. Enjoy aromas and flavours of cherry, raspberry and toasted nuts, with hints of licorice and spice. Serve with pizza, pasta or roast chicken with pomegranate glaze.",
+        "alcohol": "12.5%",
+        "location": "Veneto, Italy",
+        "sugar": "4 g/L"
+      }
+    }]
   }
   //return the placeholder (for now)
   res.send(json)
@@ -37,13 +44,19 @@ app.get('/wine/:next', (req, res) => {
   const json = {
     "id": "016840",
     "name": "Bolla Valpolicella Classico",
-    "info": {}
+    "info": {
+      "price": "$14.95",
+      "size": "750 mL",
+      "description": "Bolla wines reflect true Italian style, and express the terroir of the Veneto region. Made from hand-harvested grapes, and aged for two months in oak. Enjoy aromas and flavours of cherry, raspberry and toasted nuts, with hints of licorice and spice. Serve with pizza, pasta or roast chicken with pomegranate glaze.",
+      "alcohol": "12.5%",
+      "location": "Veneto, Italy",
+      "sugar": "4 g/L"
+    }
   }
-
   //return the placeholder (for now)
   res.send(json)
 })
 
 
-app.listen(PORT, () => console.log(`App Started on Port ${PORT}`))
+app.listen(PORT, () => console.log(`App Started on Port ${PORT}`)) 
 module.exports = app
