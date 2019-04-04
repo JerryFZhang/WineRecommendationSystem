@@ -1,6 +1,7 @@
 var express = require('express')
 var app = express()
 const fs = require('fs');
+const _ = require('lodash');
 
 let rawdata = fs.readFileSync('public/lcbo_final.json');
 let wines = JSON.parse(rawdata);
@@ -75,6 +76,10 @@ app.get('/wine/:id', (req, res) => {
 
 app.get('/wines/:num', (req, res) => {
     res.send(wines)
+})
+
+app.get('/review/:id', (req, res) => {
+  res.send(_.find(wines.data, (o)=>  { return o.id == req.params.id; }))
 })
 
 app.listen(PORT, () => console.log(`App Started on Port ${PORT}`))
