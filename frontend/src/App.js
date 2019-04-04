@@ -13,7 +13,7 @@ class App extends Component {
       return (
       <div className='row pt-5'>
          <Router>
-          <Route path="/:page" component={List}/>
+          <Route exact path="/:page" component={List}/>
           <Route path="/info/:id" component={Info}/>
           </Router>
     </div>
