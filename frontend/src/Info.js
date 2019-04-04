@@ -25,7 +25,7 @@ export default class List extends React.Component {
           this.setState({ browserLanguage: navigator.language });
         }
       }
-    
+
       // never let a process live forever
       componentWillUnmount() {
         if (this.state.intervalIsSet) {
@@ -33,7 +33,7 @@ export default class List extends React.Component {
           this.setState({ intervalIsSet: null });
         }
       }
-    
+
       // fetch data from backend
       getData = (number) => {
         fetch('http://localhost:4000/wine/'+number, {
@@ -71,13 +71,21 @@ export default class List extends React.Component {
         .then((res) => this.setState({ list: res, isLoaded: true }),
               (error) => this.setState({ isLoaded: true, error}));
       };
- 
-      
+
+
       renderWine(){
         const list  = this.state.list;
         console.log(this.state)
         return (
+
           <div className=''>
+            <nav aria-label="breadcrumb col-12">
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item"><a href="/1">Home</a></li>
+                <li className="breadcrumb-item active" aria-current="page">Wine #{this.state.data.result.id}</li>
+              </ol>
+            </nav>
+
           <div className='row pt-3'>
             <h2 className='col-12 pb-3 text-center'>{this.state.data.result.name}</h2>
            <div className='col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-3'>
@@ -127,11 +135,24 @@ export default class List extends React.Component {
               </div>
               ))}
           </div>
-          </div>
+          <nav aria-label="Page navigation example">
+        <ul className="pagination justify-content-center">
+          <li className="page-item disabled">
+          <a className="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+          <li className="page-item"><a className="page-link" href="#">1</a></li>
+          <li className="page-item"><a className="page-link" href="#">2</a></li>
+          <li className="page-item"><a className="page-link" href="#">3</a></li>
+          <li className="page-item">
+            <a className="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
 
        );
       }
-    render() {     
+    render() {
         return this.state.data.result && this.state.review && this.state.list ? this.renderWine() : (
           <span>Loading Wine Information...</span>
         )
