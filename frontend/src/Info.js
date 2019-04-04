@@ -124,7 +124,7 @@ export default class List extends React.Component {
              <Card>
               <CardBody>
              <CardImg top width='100%' src={"https://www.lcbo.com/content/dam/lcbo/products/"+wine.id+".jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"} alt='Card image cap' />
-             <CardTitle className='pt-3 text-center'>{wine.winery} - {wine.designation}
+             <CardTitle className='pt-3 text-center'>{wine.winery.charAt(0).toUpperCase() + wine.winery.slice(1)} - {wine.designation}
               <h6 className='text-center'>${wine.price}</h6>
              </CardTitle>
              <CardText>
@@ -135,19 +135,6 @@ export default class List extends React.Component {
               </div>
               ))}
           </div>
-          <nav aria-label="Page navigation example">
-        <ul className="pagination justify-content-center">
-          <li className="page-item disabled">
-          <a className="page-link" href="#" tabindex="-1">Previous</a>
-        </li>
-          <li className="page-item"><a className="page-link" href="#">1</a></li>
-          <li className="page-item"><a className="page-link" href="#">2</a></li>
-          <li className="page-item"><a className="page-link" href="#">3</a></li>
-          <li className="page-item">
-            <a className="page-link" href="#">Next</a>
-          </li>
-        </ul>
-      </nav>
     </div>
 
        );
