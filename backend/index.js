@@ -32,7 +32,7 @@ app.get('/wine/:next', (req, res) => {
   res.send(wines)
 })
 
-app.get('/wines-temp', (req, res) => {
+app.get('/wines-temp:num', (req, res) => {
   var http = require('http');
   var options = {
     host: 'localhost',
