@@ -21,22 +21,37 @@ var cors = require('cors')
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.get('/wines', (req, res) => {
-
-  //return the placeholder (for now)
-  res.send(wines)
-})
-
-// `/rocket` endpoint that gets launch data from API
-app.get('/wine/:next', (req, res) => {
-  res.send(wines)
-})
-
-app.get('/wines-temp/:num', (req, res) => {
+app.get('/wine/:id', (req, res) => {
   var http = require('http');
   var options = {
     host: 'localhost',
-    path: '/products?page='+req.params.num,
+    path: '/products/'+req.params.id,
+    port:'3000'
+
+  }
+  var request = http.request(options, function (resp) {
+    var data = '';
+    resp.on('data', function (chunk) {
+      data += chunk;
+    });
+    resp.on('end', function () {
+      res.send(data)
+      // console.log(data);
+
+    });
+  });
+  request.on('error', function (e) {
+    console.log(e.message);
+  });
+  request.end();
+
+})
+
+app.get('/wines/:num', (req, res) => {
+  var http = require('http');
+  var options = {
+    host: 'localhost',
+    path: '/products?page='+req.params.num+ '&per_page=100',
     port:'3000'
 
   }
