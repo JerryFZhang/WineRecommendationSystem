@@ -82,5 +82,11 @@ app.get('/review/:id', (req, res) => {
   res.send(_.find(wines.data, (o)=>  { return o.id == req.params.id; }))
 })
 
+app.get('/recommendation/:id', (req, res) => {
+  var arr = _.filter(wines.data,{ 'group': _.find(wines.data, (o)=>  { return o.id == req.params.id; }).group})
+  arr.shift()
+  res.send(arr)
+})
+
 app.listen(PORT, () => console.log(`App Started on Port ${PORT}`))
 module.exports = app
