@@ -84,27 +84,33 @@ export default class List extends React.Component {
           <div className=''>
 
           <div className='row pt-3'>
-            <h2 className='pb-3 text-center'>{this.state.data.result.name}</h2>
+            <h2 className='col-12 pb-3 text-center'>{this.state.data.result.name}</h2>
            <div className='col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-3'>
            <Card>
            <CardImg top width='100%' src={"https://www.lcbo.com/content/dam/lcbo/products/"+this.state.id+".jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"} alt='Card image cap' />
             </Card>
             </div>
             <div className='col-xl-8 col-lg- col-md-6 col-sm-12 mb-3'>
-            <p className=''><i class="fas fa-wine-glass-alt"></i> {this.state.data.result.style}</p>
-            <p className=''><i class="fas fa-compass"></i>{this.state.data.result.origin}</p>
-            <p className=''>{this.state.data.result.package}</p>
-            <p className=''>{this.state.data.result.varietal}</p>
+            <p className=''><i class="fas fa-wine-glass"></i> {this.state.data.result.style}</p>
+            <p className=''><i class="fas fa-compass"></i> {this.state.data.result.origin}</p>
+            <p className=''><i class="fas fa-wine-bottle"></i> {this.state.data.result.package}</p>
+            <p className=''><i class="fas fa-sun"></i> {this.state.data.result.varietal}</p>
             <p><Button color="primary" href={"https://www.lcbo.com/webapp/wcs/stores/servlet/SearchDisplay?storeId=10203&langId=-1&sType=SimpleSearch&searchTerm="+this.state.id}>Buy on LCBO ${this.state.data.result.regular_price_in_cents/100}</Button>{' '}</p>
             <Progress className ="w-100" value={this.state.review.points}>Score:{this.state.review.points} </Progress>
           </div>
+          <Card>
+          <CardBody>
             <p>{this.state.data.result.tasting_note}</p>
+          </CardBody>
+          </Card>
+
+
         </div>
                <div className='row pt-5'>
                {
                  list.map((wine, index)  => (
              <div className='col-xl-4 col-lg-4 col-md-6 col-sm-12 card-group mb-3' key={index}>
-             <a className="col-12" href={"info/"+wine.id}>
+             <a className="col-12" href={"/info/"+wine.id}>
              <Card>
               <CardBody>
              <CardImg top width='100%' src={"https://www.lcbo.com/content/dam/lcbo/products/"+wine.id+".jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"} alt='Card image cap' />

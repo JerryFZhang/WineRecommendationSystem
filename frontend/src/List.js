@@ -61,7 +61,7 @@ export default class List extends React.Component {
            {
              wines.map((wine, index)  => (
          <div className='col-xl-4 col-lg-4 col-md-6 col-sm-12 card-group mb-3' key={index}>
-         <a className="col-12" href={"info/"+wine.id}>
+         <a className="col-12" href={"/info/"+wine.id}>
          <Card>
           <CardBody>
          <CardImg top width='100%' src={"https://www.lcbo.com/content/dam/lcbo/products/"+wine.id+".jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"} alt='Card image cap' />
