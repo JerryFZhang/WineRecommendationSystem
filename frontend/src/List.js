@@ -14,13 +14,11 @@ export default class List extends React.Component {
       componentDidMount() {
         this.state.page = this.props.match.params.page
         this.getData(this.state.page);
-        console.log(this.state)
         // Pull every minute
         if (!this.state.intervalIsSet) {
           let interval = setInterval(this.getData, 60000);
           this.setState({ intervalIsSet: interval });
-        }
-  
+        }  
       }
     
       // never let a process live forever
