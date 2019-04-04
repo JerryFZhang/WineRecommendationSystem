@@ -2,8 +2,8 @@ var express = require('express')
 var app = express()
 const fs = require('fs');
 
-// let rawdata = fs.readFileSync('public/example.json');
-// let wines = JSON.parse(rawdata);
+let rawdata = fs.readFileSync('public/lcbo_final.json');
+let wines = JSON.parse(rawdata);
 
 // Load server config for future deployment
 var serverConfig = require('./config.js').serverConfig
@@ -47,33 +47,35 @@ app.get('/wine/:id', (req, res) => {
 
 })
 
+// app.get('/wines/:num', (req, res) => {
+//   var http = require('http');
+//   var options = {
+//     host: 'localhost',
+//     path: '/products?page='+req.params.num+ '&per_page=100',
+//     port:'3000'
+
+//   }
+//   var request = http.request(options, function (resp) {
+//     var data = '';
+//     resp.on('data', function (chunk) {
+//       data += chunk;
+//     });
+//     resp.on('end', function () {
+//       res.send(data)
+//       // console.log(data);
+
+//     });
+//   });
+//   request.on('error', function (e) {
+//     console.log(e.message);
+//   });
+//   request.end();
+
+// })
+
 app.get('/wines/:num', (req, res) => {
-  var http = require('http');
-  var options = {
-    host: 'localhost',
-    path: '/products?page='+req.params.num+ '&per_page=100',
-    port:'3000'
-
-  }
-  var request = http.request(options, function (resp) {
-    var data = '';
-    resp.on('data', function (chunk) {
-      data += chunk;
-    });
-    resp.on('end', function () {
-      res.send(data)
-      // console.log(data);
-
-    });
-  });
-  request.on('error', function (e) {
-    console.log(e.message);
-  });
-  request.end();
-
+    res.send(wines)
 })
-
-
 
 app.listen(PORT, () => console.log(`App Started on Port ${PORT}`))
 module.exports = app
