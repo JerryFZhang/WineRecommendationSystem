@@ -94,11 +94,11 @@ export default class List extends React.Component {
             </Card>
             </div>
             <div className='col-xl-8 col-lg- col-md-6 col-sm-12 mb-3'>
-            <p className=''><i className="fas fa-wine-glass"></i> {this.state.data.result.style}</p>
-            <p className=''><i className="fas fa-compass"></i> {this.state.data.result.origin}</p>
-            <p className=''><i className="fas fa-wine-bottle"></i> {this.state.data.result.package}</p>
-            <p className=''><i className="fas fa-sun"></i> {this.state.data.result.varietal}</p>
-            <p className=''><i className="fas fa-thumbtack"></i> {this.state.data.result.sugar_content}</p>
+            <p className=''><i className="fas col-1 fa-wine-glass"></i> {this.state.data.result.style}</p>
+            <p className=''><i className="fas col-1 fa-compass"></i> {this.state.data.result.origin}</p>
+            <p className=''><i className="fas col-1 fa-wine-bottle"></i> {this.state.data.result.package}</p>
+            <p className=''><i className="fas col-1 fa-sun"></i> {this.state.data.result.varietal}</p>
+            <p className=''><i className="fas col-1 fa-thumbtack"></i> {this.state.data.result.sugar_content}</p>
             <p><Button color="primary" target="_blank" href={"https://www.lcbo.com/webapp/wcs/stores/servlet/SearchDisplay?storeId=10203&langId=-1&sType=SimpleSearch&searchTerm="+this.state.id}><i className="fas fa-shopping-cart"></i> Buy on LCBO ${this.state.data.result.regular_price_in_cents/100}</Button>{' '}</p>
             <Progress className ="w-100" value={this.state.review.points}>Score:{this.state.review.points} </Progress>
           </div>
