@@ -103,12 +103,12 @@ export default class List extends React.Component {
             <Progress className ="w-100" value={this.state.review.points}>Score:{this.state.review.points} </Progress>
           </div>
           <h3 className='col-12 pt-3'>What Reviewers Are Saying</h3>
-          <Card className='pt-3'>
+          <Card className='mt-3 col-12'>
           <CardBody>
             <p>{this.state.data.result.tasting_note}</p>
           </CardBody>
           </Card>
-          <Card className='pt-3'>
+          <Card className='mt-3 col-12'>
           <CardBody>
             <p>{this.state.review.description}</p>
           </CardBody>
