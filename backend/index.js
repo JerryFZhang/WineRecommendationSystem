@@ -2,8 +2,8 @@ var express = require('express')
 var app = express()
 const fs = require('fs');
 
-let rawdata = fs.readFileSync('public/example.json');
-let wines = JSON.parse(rawdata);
+// let rawdata = fs.readFileSync('public/example.json');
+// let wines = JSON.parse(rawdata);
 
 // Load server config for future deployment
 var serverConfig = require('./config.js').serverConfig
@@ -32,11 +32,11 @@ app.get('/wine/:next', (req, res) => {
   res.send(wines)
 })
 
-app.get('/wines-temp:num', (req, res) => {
+app.get('/wines-temp/:num', (req, res) => {
   var http = require('http');
   var options = {
     host: 'localhost',
-    path: '/products',
+    path: '/products?page='+req.params.num,
     port:'3000'
 
   }
