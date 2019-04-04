@@ -9,17 +9,13 @@ export default class List extends React.Component {
         browserLanguage: null,
         intervalIsSet: false,
         isLoaded:null,
-        page: ''
+        page: '1'
       };
   
       componentDidMount() {
-        if (this.state.page){
-          console.log()
-        }else{
-          console.log(this.props.match.params.id)
-        }
-        this.getData('');
-    
+        this.state.page = this.props.match.params.page
+        this.getData(this.state.page);
+        console.log(this.state)
         // Pull every minute
         if (!this.state.intervalIsSet) {
           let interval = setInterval(this.getData, 60000);
@@ -42,7 +38,7 @@ export default class List extends React.Component {
     
       // fetch data from backend
       getData = (number) => {
-        fetch('http://localhost:4000/wines-temp/'+number, {
+        fetch('http://localhost:4000/wines/'+number, {
             headers: {
                 'Accept': 'application/json',
             },
@@ -59,27 +55,28 @@ export default class List extends React.Component {
         console.log(wines)
         return (
         <div className='row pt-5'>
-         <div className='col-12'>
+           {
+             
+             /* <div className='col-12'>
             <nav aria-label="Page navigation example">
           <ul className="pagination justify-content-center">
           <li className="page-item disabled">
-            <a className="page-link" href="#" tabindex="-1">Previous</a>
+            <a className="page-link" onClick={this.getData(this.state.page-1)}>Previous</a>
               </li>
-              <li className="page-item"><a className="page-link" href="#">1</a></li>
-              <li className="page-item"><a className="page-link" href="#">2</a></li>
+              <li className="page-item"><a className="page-link" onClick={this.getData(this.state.page)}>{this.state.page}</a></li>
+              <li className="page-item"><a className="page-link" onClick={this.getData(this.state.page)}>{this.state.page}</a></li>
               <li className="page-item"><a className="page-link" href="#">3</a></li>
               <li className="page-item">
-              <a className="page-link" href="#">Next</a>
+              <a className="page-link" onClick={this.getData(this.state.page+1)}>Next</a>
             </li>
           </ul>
         </nav>
-        321{this.props.id}123
-        </div>
+        </div> */}
            {
              wines === undefined || wines.length <= 0  ? 'NO ENTRIES'
               : wines.map((wine, index)  => (
          <div className='col-xl-4 col-lg-4 col-md-6 col-sm-12 card-group mb-3' key={index}>
-         <a href={"https://www.lcbo.com/webapp/wcs/stores/servlet/SearchDisplay?storeId=10203&langId=-1&sType=SimpleSearch&searchTerm="+wine.id}>
+         <a className="col-12" href={"info/"+wine.id}>
          <Card>
           <CardBody>
          <CardImg top width='100%' src={"https://www.lcbo.com/content/dam/lcbo/products/"+wine.id+".jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"} alt='Card image cap' />
